@@ -18,9 +18,12 @@ const port = (() => {
     return num;
 })();
 
-const express = require("express");
-const cors = require("cors");
-const helmet = require("helmet");
+// const express = require("express");
+// const cors = require("cors");
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+// const helmet = require("helmet");
 const app = express();
 
 // =============================================================================
@@ -49,7 +52,9 @@ app.use(express.json());
 
 // ADD YOUR WORK HERE
 
-require('dotenv').config();
+import dotenv from "dotenv";
+
+dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 if (!JWT_SECRET) {
     console.error("missing JWT_SECRET");
