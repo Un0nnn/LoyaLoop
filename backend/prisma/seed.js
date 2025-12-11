@@ -6,8 +6,8 @@
  * Or with: npm run seed (if configured in package.json)
  */
 
-const { PrismaClient } = require('@prisma/client');
-const bcrypt = require('bcrypt');
+import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
