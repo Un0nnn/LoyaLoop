@@ -17,18 +17,25 @@ dotenv.config();
 const port = (() => {
     const args = process.argv;
 
-    if (args.length !== 3) {
-        console.error("usage: node index.js port");
-        process.exit(1);
+    // Check if port provided as command line argument
+    if (args.length === 3) {
+        const num = parseInt(args[2], 10);
+        if (!isNaN(num)) {
+            return num;
+        }
     }
 
-    const num = parseInt(args[2], 10);
-    if (isNaN(num)) {
-        console.error("error: argument must be an integer.");
-        process.exit(1);
+    // Fallback to PORT environment variable (Railway)
+    if (process.env.PORT) {
+        const num = parseInt(process.env.PORT, 10);
+        if (!isNaN(num)) {
+            return num;
+        }
     }
 
-    return num;
+    // Default fallback
+    console.error("No valid port provided. Usage: node index.js <port> OR set PORT environment variable");
+    process.exit(1);
 })();
 
 const JWT_SECRET = process.env.JWT_SECRET;
