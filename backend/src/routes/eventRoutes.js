@@ -1,6 +1,6 @@
 "use strict";
 
-const express = require("express");
+import express from "express";
 const router = express.Router();
 const EventController = require("../controllers/eventController");
 const authMiddleware = require("../auth/userAuthentication");

@@ -117,10 +117,10 @@ app.set("jwtSecret", JWT_SECRET);
 
 // const authRoutes = require("./routes/authRoutes");
 import userRoutes from "./src/routes/userRoutes";
-const authRoutes = require("./src/routes/authRoutes");
-const transactionRoutes = require("./src/routes/transactionRoutes");
-const eventRoutes = require("./src/routes/eventRoutes");
-const promotionRoutes = require("./src/routes/promotionRoutes");
+import authRoutes from "./src/routes/authRoutes";
+import transactionRoutes from "./src/routes/transactionRoutes";
+import eventRoutes from "./src/routes/eventRoutes";
+import promotionRoutes from "./src/routes/promotionRoutes";
 
 
 app.use(authRoutes);
