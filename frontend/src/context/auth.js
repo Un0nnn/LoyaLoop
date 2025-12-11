@@ -172,7 +172,7 @@ export function AuthProvider({ children }) {
         }
     };
 
-    const switchInterface = (iface) => {
+    const switchInterface = useCallback((iface) => {
         if (!currentUser) return false;
         const allowed = getInterfacesForRole(currentUser.role);
         if (!allowed.includes(iface)) return false;
@@ -186,7 +186,7 @@ export function AuthProvider({ children }) {
             recordAudit({ action: 'switch', by: currentUser?.utorid || null, from: prev || null, to: iface, at: new Date().toISOString() });
         } catch (e) {}
         return true;
-    };
+    }, [currentUser, activeInterface]);
 
     const login = useCallback(async (utorid, password) => {
         const demoUser = demoUsers[utorid];
