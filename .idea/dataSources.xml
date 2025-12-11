@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="dev" uuid="36aa4494-09f4-48f8-b986-a44fb3ddde8d">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>8a41cfa0-f141-4e1a-8037-a8286f786c95</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/backend/prisma/dev.db</jdbc-url>

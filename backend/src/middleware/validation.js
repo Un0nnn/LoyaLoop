@@ -1,5 +1,5 @@
 // Input validation and sanitization middleware
-const { body, validationResult } = require('express-validator');
+import { body, validationResult } from 'express-validator';
 
 /**
  * Validates and sanitizes string inputs to prevent XSS attacks
@@ -55,7 +55,15 @@ const checkValidation = (req, res, next) => {
     next();
 };
 
-module.exports = {
+export {
+    sanitizeString,
+    validateEmail,
+    validateInteger,
+    validatePositiveNumber,
+    checkValidation
+};
+
+export default {
     sanitizeString,
     validateEmail,
     validateInteger,
