@@ -1,0 +1,158 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum RoleType {
+  regular
+  cashier
+  manager
+  superuser
+}
+
+enum TransactionType {
+  purchase
+  redemption
+  adjustment
+  transfer
+  event
+}
+
+enum PromotionType {
+  automatic
+  onetime
+}
+
+model User {
+  id         Int       @id @default(autoincrement())
+  utorid     String    @unique
+  name       String
+  email      String    @unique
+  password   String
+  role       RoleType  @default(regular)
+  points     Int       @default(0)
+  createdAt  DateTime  @default(now())
+  lastLogin  DateTime?
+  verified   Boolean   @default(false)
+  suspicious Boolean   @default(false)
+  activated  Boolean   @default(false)
+  birthday   DateTime?
+  avatarUrl  String?
+
+  transactions        Transaction[]    @relation("CustomerTransactions")
+  cashierTransactions Transaction[]    @relation("CashierTransactions")
+  transferReceived    Transaction[]    @relation("TransferRecipient")
+  usedPromotions      PromotionUse[]
+  organizedEvents     EventOrganizer[]
+  eventGuests         EventGuest[]
+  resetPassword       ResetPassword[]
+
+  @@map("users")
+}
+
+model Transaction {
+  id                   Int             @id @default(autoincrement())
+  type                 TransactionType
+  amount               Float
+  points               Int             @default(0)
+  createdAt            DateTime        @default(now())
+  userId               Int
+  cashierId            Int?
+  managerVerified      Boolean?        @default(false)
+  relatedTransactionId Int?
+  targetUserId         Int?
+  remark               String?         @default("")
+  promotionIds         String? // Store as JSON string: "[1,2,3]"
+
+  customer   User  @relation("CustomerTransactions", fields: [userId], references: [id])
+  cashier    User? @relation("CashierTransactions", fields: [cashierId], references: [id])
+  targetUser User? @relation("TransferRecipient", fields: [targetUserId], references: [id])
+
+  @@map("transactions")
+}
+
+model ResetPassword {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  used      Boolean  @default(false)
+
+  @@map("resetpassword")
+}
+
+model Event {
+  id              Int      @id @default(autoincrement())
+  name            String
+  description     String
+  location        String
+  capacity        Int?
+  startTime       DateTime
+  endTime         DateTime
+  pointsAllocated Int      @default(0)
+  pointsAwarded   Int      @default(0)
+  published       Boolean  @default(false)
+
+  organizers EventOrganizer[]
+  guests     EventGuest[]
+
+  @@map("events")
+}
+
+model EventOrganizer {
+  id      Int @id @default(autoincrement())
+  eventId Int
+  userId  Int
+
+  event Event @relation(fields: [eventId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@unique([userId, eventId])
+  @@map("event_organizers")
+}
+
+model EventGuest {
+  id                  Int     @id @default(autoincrement())
+  eventId             Int
+  userId              Int
+  attendanceConfirmed Boolean @default(false)
+
+  event Event @relation(fields: [eventId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@unique([userId, eventId])
+  @@map("event_guests")
+}
+
+model Promotion {
+  id          Int            @id @default(autoincrement())
+  name        String         @unique
+  description String
+  type        PromotionType
+  startTime   DateTime
+  endTime     DateTime
+  minSpending Float?
+  rate        Float?
+  points      Int?
+  uses        PromotionUse[]
+
+  @@map("promotions")
+}
+
+model PromotionUse {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  promotionId Int
+  usedAt      DateTime @default(now())
+
+  user      User      @relation(fields: [userId], references: [id])
+  promotion Promotion @relation(fields: [promotionId], references: [id])
+
+  @@unique([userId, promotionId])
+  @@map("promotion_uses")
+}

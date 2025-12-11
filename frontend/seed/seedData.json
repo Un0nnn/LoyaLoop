@@ -1,0 +1,597 @@
+{
+  "metadata": {
+    "generatedAt": "2025-11-20T06:02:58.834Z",
+    "totals": {
+      "users": 11,
+      "transactions": 30,
+      "events": 8,
+      "promotions": 8
+    }
+  },
+  "users": [
+    {
+      "id": 1,
+      "points": 80,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/rpatel.png",
+      "role": "regular",
+      "name": "Riley Patel",
+      "utorid": "rpatel",
+      "email": "riley.patel@example.com"
+    },
+    {
+      "id": 2,
+      "points": 95,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/nchen.png",
+      "role": "regular",
+      "name": "Noah Chen",
+      "utorid": "nchen",
+      "email": "noah.chen@example.com"
+    },
+    {
+      "id": 3,
+      "points": 110,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/esingh.png",
+      "role": "regular",
+      "name": "Emma Singh",
+      "utorid": "esingh",
+      "email": "emma.singh@example.com"
+    },
+    {
+      "id": 4,
+      "points": 125,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/acamp.png",
+      "role": "regular",
+      "name": "Ava Campbell",
+      "utorid": "acamp",
+      "email": "ava.campbell@example.com"
+    },
+    {
+      "id": 5,
+      "points": 140,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/lmartin.png",
+      "role": "regular",
+      "name": "Lucas Martin",
+      "utorid": "lmartin",
+      "email": "lucas.martin@example.com"
+    },
+    {
+      "id": 6,
+      "points": 155,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/jcash.png",
+      "role": "cashier",
+      "name": "Jane Cashier",
+      "utorid": "jcash",
+      "email": "jane.cashier@example.com"
+    },
+    {
+      "id": 7,
+      "points": 170,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/bmanager.png",
+      "role": "manager",
+      "name": "Bob Manager",
+      "utorid": "bmanager",
+      "email": "bob.manager@example.com"
+    },
+    {
+      "id": 8,
+      "points": 185,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/sadmin.png",
+      "role": "superuser",
+      "name": "Sara Admin",
+      "utorid": "sadmin",
+      "email": "sara.admin@example.com"
+    },
+    {
+      "id": 9,
+      "points": 200,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/mevent.png",
+      "role": "organizer",
+      "name": "Mia Eventer",
+      "utorid": "mevent",
+      "email": "mia.eventer@example.com"
+    },
+    {
+      "id": 10,
+      "points": 215,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/lteller.png",
+      "role": "cashier",
+      "name": "Leo Teller",
+      "utorid": "lteller",
+      "email": "leo.teller@example.com"
+    },
+    {
+      "id": 11,
+      "points": 230,
+      "password": "Password!123",
+      "avatarUrl": "/images/avatars/obrooks.png",
+      "role": "regular",
+      "name": "Olivia Brooks",
+      "utorid": "obrooks",
+      "email": "olivia.brooks@example.com"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TX-1000",
+      "type": "Purchase",
+      "amount": 54.63,
+      "points": 55,
+      "date": "2025-11-20T06:02:58.833Z",
+      "peer": "Maple Coffee",
+      "description": "Purchase processed for rpatel",
+      "userId": 1
+    },
+    {
+      "id": "TX-1001",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -63,
+      "date": "2025-11-19T06:02:58.833Z",
+      "peer": "Campus Bookstore",
+      "description": "Redemption processed for nchen",
+      "userId": 2
+    },
+    {
+      "id": "TX-1002",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -17,
+      "date": "2025-11-18T06:02:58.833Z",
+      "peer": "jcash",
+      "description": "Transfer processed for esingh",
+      "userId": 3
+    },
+    {
+      "id": "TX-1003",
+      "type": "Purchase",
+      "amount": 44.1,
+      "points": 44,
+      "date": "2025-11-17T06:02:58.833Z",
+      "peer": "Bike Share",
+      "description": "Purchase processed for acamp",
+      "userId": 4
+    },
+    {
+      "id": "TX-1004",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -62,
+      "date": "2025-11-16T06:02:58.833Z",
+      "peer": "Tech Shop",
+      "description": "Redemption processed for lmartin",
+      "userId": 5
+    },
+    {
+      "id": "TX-1005",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -15,
+      "date": "2025-11-15T06:02:58.833Z",
+      "peer": "mevent",
+      "description": "Transfer processed for jcash",
+      "userId": 6
+    },
+    {
+      "id": "TX-1006",
+      "type": "Purchase",
+      "amount": 51.02,
+      "points": 51,
+      "date": "2025-11-14T06:02:58.833Z",
+      "peer": "Campus Bookstore",
+      "description": "Purchase processed for bmanager",
+      "userId": 7
+    },
+    {
+      "id": "TX-1007",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -54,
+      "date": "2025-11-13T06:02:58.833Z",
+      "peer": "Union Market",
+      "description": "Redemption processed for sadmin",
+      "userId": 8
+    },
+    {
+      "id": "TX-1008",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -11,
+      "date": "2025-11-12T06:02:58.833Z",
+      "peer": "rpatel",
+      "description": "Transfer processed for mevent",
+      "userId": 9
+    },
+    {
+      "id": "TX-1009",
+      "type": "Purchase",
+      "amount": 56.14,
+      "points": 56,
+      "date": "2025-11-11T06:02:58.833Z",
+      "peer": "Tech Shop",
+      "description": "Purchase processed for lteller",
+      "userId": 10
+    },
+    {
+      "id": "TX-1010",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -63,
+      "date": "2025-11-10T06:02:58.833Z",
+      "peer": "Maple Coffee",
+      "description": "Redemption processed for obrooks",
+      "userId": 11
+    },
+    {
+      "id": "TX-1011",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -24,
+      "date": "2025-11-09T06:02:58.833Z",
+      "peer": "acamp",
+      "description": "Transfer processed for rpatel",
+      "userId": 1
+    },
+    {
+      "id": "TX-1012",
+      "type": "Purchase",
+      "amount": 32.81,
+      "points": 33,
+      "date": "2025-11-08T06:02:58.833Z",
+      "peer": "Union Market",
+      "description": "Purchase processed for nchen",
+      "userId": 2
+    },
+    {
+      "id": "TX-1013",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -59,
+      "date": "2025-11-07T06:02:58.833Z",
+      "peer": "Bike Share",
+      "description": "Redemption processed for esingh",
+      "userId": 3
+    },
+    {
+      "id": "TX-1014",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -12,
+      "date": "2025-11-06T06:02:58.833Z",
+      "peer": "bmanager",
+      "description": "Transfer processed for acamp",
+      "userId": 4
+    },
+    {
+      "id": "TX-1015",
+      "type": "Purchase",
+      "amount": 29.18,
+      "points": 29,
+      "date": "2025-11-05T06:02:58.833Z",
+      "peer": "Maple Coffee",
+      "description": "Purchase processed for lmartin",
+      "userId": 5
+    },
+    {
+      "id": "TX-1016",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -63,
+      "date": "2025-11-04T06:02:58.833Z",
+      "peer": "Campus Bookstore",
+      "description": "Redemption processed for jcash",
+      "userId": 6
+    },
+    {
+      "id": "TX-1017",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -15,
+      "date": "2025-11-03T06:02:58.833Z",
+      "peer": "lteller",
+      "description": "Transfer processed for bmanager",
+      "userId": 7
+    },
+    {
+      "id": "TX-1018",
+      "type": "Purchase",
+      "amount": 29.48,
+      "points": 29,
+      "date": "2025-11-02T06:02:58.833Z",
+      "peer": "Bike Share",
+      "description": "Purchase processed for sadmin",
+      "userId": 8
+    },
+    {
+      "id": "TX-1019",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -49,
+      "date": "2025-11-01T06:02:58.833Z",
+      "peer": "Tech Shop",
+      "description": "Redemption processed for mevent",
+      "userId": 9
+    },
+    {
+      "id": "TX-1020",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -14,
+      "date": "2025-10-31T06:02:58.833Z",
+      "peer": "nchen",
+      "description": "Transfer processed for lteller",
+      "userId": 10
+    },
+    {
+      "id": "TX-1021",
+      "type": "Purchase",
+      "amount": 36.62,
+      "points": 37,
+      "date": "2025-10-30T06:02:58.833Z",
+      "peer": "Campus Bookstore",
+      "description": "Purchase processed for obrooks",
+      "userId": 11
+    },
+    {
+      "id": "TX-1022",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -41,
+      "date": "2025-10-29T06:02:58.833Z",
+      "peer": "Union Market",
+      "description": "Redemption processed for rpatel",
+      "userId": 1
+    },
+    {
+      "id": "TX-1023",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -29,
+      "date": "2025-10-28T06:02:58.833Z",
+      "peer": "lmartin",
+      "description": "Transfer processed for nchen",
+      "userId": 2
+    },
+    {
+      "id": "TX-1024",
+      "type": "Purchase",
+      "amount": 34.7,
+      "points": 35,
+      "date": "2025-10-27T06:02:58.833Z",
+      "peer": "Tech Shop",
+      "description": "Purchase processed for esingh",
+      "userId": 3
+    },
+    {
+      "id": "TX-1025",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -48,
+      "date": "2025-10-26T06:02:58.833Z",
+      "peer": "Maple Coffee",
+      "description": "Redemption processed for acamp",
+      "userId": 4
+    },
+    {
+      "id": "TX-1026",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -16,
+      "date": "2025-10-25T06:02:58.833Z",
+      "peer": "sadmin",
+      "description": "Transfer processed for lmartin",
+      "userId": 5
+    },
+    {
+      "id": "TX-1027",
+      "type": "Purchase",
+      "amount": 32.77,
+      "points": 33,
+      "date": "2025-10-24T06:02:58.833Z",
+      "peer": "Union Market",
+      "description": "Purchase processed for jcash",
+      "userId": 6
+    },
+    {
+      "id": "TX-1028",
+      "type": "Redemption",
+      "amount": 0,
+      "points": -51,
+      "date": "2025-10-23T06:02:58.833Z",
+      "peer": "Bike Share",
+      "description": "Redemption processed for bmanager",
+      "userId": 7
+    },
+    {
+      "id": "TX-1029",
+      "type": "Transfer",
+      "amount": 0,
+      "points": -20,
+      "date": "2025-10-22T06:02:58.833Z",
+      "peer": "obrooks",
+      "description": "Transfer processed for sadmin",
+      "userId": 8
+    }
+  ],
+  "events": [
+    {
+      "id": "EV-200",
+      "title": "Alumni Mixer",
+      "location": "Hart House",
+      "startDate": "2025-11-20T06:02:58.834Z",
+      "endDate": "2025-11-20T08:02:58.834Z",
+      "capacity": 50,
+      "organizer": "mevent",
+      "status": "Published",
+      "description": "Network, learn, and earn loyalty points at this curated event."
+    },
+    {
+      "id": "EV-201",
+      "title": "Coding Jam",
+      "location": "BA2159",
+      "startDate": "2025-11-27T06:02:58.834Z",
+      "endDate": "2025-11-27T08:02:58.834Z",
+      "capacity": 60,
+      "organizer": "mevent",
+      "status": "Draft",
+      "description": "Network, learn, and earn loyalty points at this curated event."
+    },
+    {
+      "id": "EV-202",
+      "title": "Study Sprint",
+      "location": "UC Quad",
+      "startDate": "2025-12-04T06:02:58.834Z",
+      "endDate": "2025-12-04T08:02:58.834Z",
+      "capacity": 70,
+      "organizer": "mevent",
+      "status": "Published",
+      "description": "Network, learn, and earn loyalty points at this curated event."
+    },
+    {
+      "id": "EV-203",
+      "title": "Wellness Fair",
+      "location": "Robarts 14F",
+      "startDate": "2025-12-11T06:02:58.834Z",
+      "endDate": "2025-12-11T08:02:58.834Z",
+      "capacity": 80,
+      "organizer": "mevent",
+      "status": "Draft",
+      "description": "Network, learn, and earn loyalty points at this curated event."
+    },
+    {
+      "id": "EV-204",
+      "title": "Trivia Night",
+      "location": "Hart House",
+      "startDate": "2025-12-18T06:02:58.834Z",
+      "endDate": "2025-12-18T08:02:58.834Z",
+      "capacity": 90,
+      "organizer": "mevent",
+      "status": "Published",
+      "description": "Network, learn, and earn loyalty points at this curated event."
+    },
+    {
+      "id": "EV-205",
+      "title": "FinLit Workshop",
+      "location": "BA2159",
+      "startDate": "2025-12-25T06:02:58.834Z",
+      "endDate": "2025-12-25T08:02:58.834Z",
+      "capacity": 100,
+      "organizer": "mevent",
+      "status": "Draft",
+      "description": "Network, learn, and earn loyalty points at this curated event."
+    },
+    {
+      "id": "EV-206",
+      "title": "Community Cleanup",
+      "location": "UC Quad",
+      "startDate": "2026-01-01T06:02:58.834Z",
+      "endDate": "2026-01-01T08:02:58.834Z",
+      "capacity": 110,
+      "organizer": "mevent",
+      "status": "Published",
+      "description": "Network, learn, and earn loyalty points at this curated event."
+    },
+    {
+      "id": "EV-207",
+      "title": "Design Challenge",
+      "location": "Robarts 14F",
+      "startDate": "2026-01-08T06:02:58.834Z",
+      "endDate": "2026-01-08T08:02:58.834Z",
+      "capacity": 120,
+      "organizer": "mevent",
+      "status": "Draft",
+      "description": "Network, learn, and earn loyalty points at this curated event."
+    }
+  ],
+  "promotions": [
+    {
+      "id": "PR-300",
+      "title": "Brew Bonus",
+      "code": "LOYAL100",
+      "description": "Limited-time offer automatically applied at checkout.",
+      "pointsRequired": 40,
+      "startDate": "2025-11-20T06:02:58.834Z",
+      "endDate": "2025-11-27T06:02:58.834Z",
+      "status": "Draft"
+    },
+    {
+      "id": "PR-301",
+      "title": "Book Bundle",
+      "code": "LOYAL101",
+      "description": "Limited-time offer automatically applied at checkout.",
+      "pointsRequired": 50,
+      "startDate": "2025-11-19T06:02:58.834Z",
+      "endDate": "2025-11-28T06:02:58.834Z",
+      "status": "Live"
+    },
+    {
+      "id": "PR-302",
+      "title": "Transit Top-up",
+      "code": "LOYAL102",
+      "description": "Limited-time offer automatically applied at checkout.",
+      "pointsRequired": 60,
+      "startDate": "2025-11-18T06:02:58.834Z",
+      "endDate": "2025-11-29T06:02:58.834Z",
+      "status": "Live"
+    },
+    {
+      "id": "PR-303",
+      "title": "Snack Saver",
+      "code": "LOYAL103",
+      "description": "Limited-time offer automatically applied at checkout.",
+      "pointsRequired": 70,
+      "startDate": "2025-11-17T06:02:58.834Z",
+      "endDate": "2025-11-30T06:02:58.834Z",
+      "status": "Draft"
+    },
+    {
+      "id": "PR-304",
+      "title": "Gear Flash",
+      "code": "LOYAL104",
+      "description": "Limited-time offer automatically applied at checkout.",
+      "pointsRequired": 80,
+      "startDate": "2025-11-16T06:02:58.834Z",
+      "endDate": "2025-12-01T06:02:58.834Z",
+      "status": "Live"
+    },
+    {
+      "id": "PR-305",
+      "title": "Wellness Boost",
+      "code": "LOYAL105",
+      "description": "Limited-time offer automatically applied at checkout.",
+      "pointsRequired": 90,
+      "startDate": "2025-11-15T06:02:58.834Z",
+      "endDate": "2025-12-02T06:02:58.834Z",
+      "status": "Live"
+    },
+    {
+      "id": "PR-306",
+      "title": "Cafe Combo",
+      "code": "LOYAL106",
+      "description": "Limited-time offer automatically applied at checkout.",
+      "pointsRequired": 100,
+      "startDate": "2025-11-14T06:02:58.834Z",
+      "endDate": "2025-12-03T06:02:58.834Z",
+      "status": "Draft"
+    },
+    {
+      "id": "PR-307",
+      "title": "Movie Night",
+      "code": "LOYAL107",
+      "description": "Limited-time offer automatically applied at checkout.",
+      "pointsRequired": 110,
+      "startDate": "2025-11-13T06:02:58.834Z",
+      "endDate": "2025-12-04T06:02:58.834Z",
+      "status": "Live"
+    }
+  ]
+}

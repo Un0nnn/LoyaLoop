@@ -1,0 +1,353 @@
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+Server running on port 37779
+Valid password: false
+Valid password: true
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+undefined
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+undefined
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Error updating user: PrismaClientValidationError:
+Invalid `prisma.user.findUnique()` invocation in
+/data/markus/workspace/workers/autotsu4/src/controllers/userController.js:180:40
+
+  177     return res.status(403).json({ error: "Insufficient permissions" });
+  178 }
+  179
+→ 180 const user = await prisma.user.findUnique({
+        where: {
+      +   id: Int
+        }
+      })
+
+Argument `id` is missing.
+    at Nn (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at ei.handleRequestError (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:121:6911)
+    at ei.handleAndLogRequestError (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:121:6593)
+    at ei.request (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:121:6300)
+    at async a (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:130:9551)
+    at async exports.updateUser (/data/markus/workspace/workers/autotsu4/src/controllers/userController.js:180:22) {
+  clientVersion: '6.18.0'
+}
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Error updating user: PrismaClientValidationError:
+Invalid `prisma.user.findUnique()` invocation in
+/data/markus/workspace/workers/autotsu4/src/controllers/userController.js:180:40
+
+  177     return res.status(403).json({ error: "Insufficient permissions" });
+  178 }
+  179
+→ 180 const user = await prisma.user.findUnique({
+        where: {
+      +   id: Int
+        }
+      })
+
+Argument `id` is missing.
+    at Nn (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at ei.handleRequestError (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:121:6911)
+    at ei.handleAndLogRequestError (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:121:6593)
+    at ei.request (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:121:6300)
+    at async a (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:130:9551)
+    at async exports.updateUser (/data/markus/workspace/workers/autotsu4/src/controllers/userController.js:180:22) {
+  clientVersion: '6.18.0'
+}
+undefined
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+Error updating user: PrismaClientValidationError:
+Invalid `prisma.user.findUnique()` invocation in
+/data/markus/workspace/workers/autotsu4/src/controllers/userController.js:180:40
+
+  177     return res.status(403).json({ error: "Insufficient permissions" });
+  178 }
+  179
+→ 180 const user = await prisma.user.findUnique({
+        where: {
+      +   id: Int
+        }
+      })
+
+Argument `id` is missing.
+    at Nn (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at ei.handleRequestError (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:121:6911)
+    at ei.handleAndLogRequestError (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:121:6593)
+    at ei.request (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:121:6300)
+    at async a (/data/markus/workspace/workers/autotsu4/node_modules/@prisma/client/runtime/library.js:130:9551)
+    at async exports.updateUser (/data/markus/workspace/workers/autotsu4/src/controllers/userController.js:180:22) {
+  clientVersion: '6.18.0'
+}
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+Bearer invalid309
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+TypeError: prisma.raw is not a function
+    at exports.getEvents (/data/markus/workspace/workers/autotsu4/src/controllers/eventController.js:117:41)
+    at Layer.handle [as handle_request] (/data/markus/workspace/workers/autotsu4/node_modules/express/lib/router/layer.js:95:5)
+    at next (/data/markus/workspace/workers/autotsu4/node_modules/express/lib/router/route.js:149:13)
+    at /data/markus/workspace/workers/autotsu4/src/auth/userAuthentication.js:31:13
+    at Layer.handle [as handle_request] (/data/markus/workspace/workers/autotsu4/node_modules/express/lib/router/layer.js:95:5)
+    at next (/data/markus/workspace/workers/autotsu4/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/data/markus/workspace/workers/autotsu4/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/data/markus/workspace/workers/autotsu4/node_modules/express/lib/router/layer.js:95:5)
+    at /data/markus/workspace/workers/autotsu4/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/data/markus/workspace/workers/autotsu4/node_modules/express/lib/router/index.js:346:12)
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXRvcmlkIjoiY2xpdmUxMjMiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZW1haWwiOiJjbGl2ZS5zdUBtYWlsLnV0b3JvbnRvLmNhIiwiaWF0IjoxNzYyMTQzMzQ0LCJleHAiOjE3NjIyMjk3NDR9.zwjkyTrY3lSjnp9tp4bFlnb3uMfq9Ua-now1p9k0ZUw
+{
+  id: 1,
+  utorid: 'clive123',
+  role: 'superuser',
+  email: 'clive.su@mail.utoronto.ca',
+  iat: 1762143344,
+  exp: 1762229744
+}
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+Bearer invalid-token
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined

@@ -1,0 +1,1220 @@
+================================================================================
+                        LOYALLOOP - INSTALLATION GUIDE
+================================================================================
+
+Date: December 10, 2025
+Application: LoyalLoop Rewards System
+Stack: React Frontend + Node.js/Express Backend + SQLite Database
+
+================================================================================
+                            TABLE OF CONTENTS
+================================================================================
+
+1. SYSTEM REQUIREMENTS
+2. DEPENDENCIES & PACKAGES
+3. DEVELOPMENT SETUP
+4. PRODUCTION DEPLOYMENT
+5. SERVER CONFIGURATION (Nginx/Apache)
+6. HTTPS/SSL SETUP
+7. DATABASE SETUP
+8. ENVIRONMENT CONFIGURATION
+9. TROUBLESHOOTING
+10. MAINTENANCE
+
+================================================================================
+                          1. SYSTEM REQUIREMENTS
+================================================================================
+
+MINIMUM REQUIREMENTS:
+--------------------
+- Operating System: Ubuntu 20.04+ / macOS 10.15+ / Windows 10+
+- Node.js: Version 18.x or higher
+- npm: Version 9.x or higher
+- Memory: 2GB RAM minimum
+- Disk Space: 500MB free space
+- Network: Port 3000 (backend), Port 3001 (frontend dev)
+
+RECOMMENDED FOR PRODUCTION:
+--------------------------
+- Operating System: Ubuntu 22.04 LTS
+- Node.js: Version 20.x LTS
+- npm: Version 10.x
+- Memory: 4GB RAM
+- Disk Space: 5GB free space
+- Reverse Proxy: Nginx 1.18+ or Apache 2.4+
+- SSL Certificate: Let's Encrypt (free) or commercial
+
+================================================================================
+                      2. DEPENDENCIES & PACKAGES
+================================================================================
+
+2.1 BACKEND DEPENDENCIES
+------------------------
+
+REQUIRED PACKAGES (package.json):
+```json
+{
+  "@prisma/client": "^6.18.0",     // Database ORM
+  "bcrypt": "^5.1.1",               // Password hashing
+  "cors": "^2.8.5",                 // Cross-Origin Resource Sharing
+  "dotenv": "^17.2.3",              // Environment variables
+  "express": "^4.21.2",             // Web framework
+  "express-jwt": "^8.5.1",          // JWT middleware
+  "helmet": "^7.1.0",               // Security headers (HTTPS)
+  "jsonwebtoken": "^9.0.2",         // JWT token generation
+  "multer": "^1.4.5-lts.1",         // File upload handling
+  "nodemailer": "^6.9.3",           // Email notifications
+  "prisma": "^6.18.0",              // Database toolkit
+  "sqlite3": "^5.1.7",              // SQLite database driver
+  "uuid": "^11.1.0",                // Unique ID generation
+  "zod": "^3.24.2"                  // Schema validation
+}
+```
+
+INSTALL BACKEND PACKAGES:
+```bash
+cd backend
+npm install
+```
+
+2.2 FRONTEND DEPENDENCIES
+-------------------------
+
+REQUIRED PACKAGES (package.json):
+```json
+{
+  "@emotion/react": "^11.14.0",              // Styling
+  "@emotion/styled": "^11.14.1",             // Styled components
+  "@mui/icons-material": "^7.3.5",           // Material UI icons
+  "@mui/material": "^7.3.5",                 // Material UI components
+  "@testing-library/dom": "^10.4.1",         // Testing utilities
+  "@testing-library/jest-dom": "^6.9.1",     // Jest matchers
+  "@testing-library/react": "^16.3.0",       // React testing
+  "@testing-library/user-event": "^13.5.0",  // User interaction testing
+  "axios": "^1.7.7",                         // HTTP client
+  "dompurify": "^3.0.5",                     // XSS protection
+  "react": "^19.2.0",                        // React framework
+  "react-dom": "^19.2.0",                    // React DOM
+  "react-router-dom": "^7.9.6",              // Routing
+  "react-scripts": "5.0.1",                  // React build scripts
+  "react-spinners": "^0.17.0",               // Loading spinners
+  "recharts": "^2.12.2",                     // Charts/graphs
+  "sass": "^1.94.1",                         // SASS preprocessor
+  "web-vitals": "^2.1.4"                     // Performance metrics
+}
+```
+
+INSTALL FRONTEND PACKAGES:
+```bash
+cd frontend
+npm install
+```
+
+2.3 SYSTEM-LEVEL DEPENDENCIES
+-----------------------------
+
+For Ubuntu/Debian:
+```bash
+# Update package list
+sudo apt update
+
+# Install Node.js 20.x LTS
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Install build essentials (required for native modules)
+sudo apt install -y build-essential python3 git
+
+# Install PM2 (production process manager)
+sudo npm install -g pm2
+
+# Install Nginx (web server/reverse proxy)
+sudo apt install -y nginx
+
+# Install Certbot (Let's Encrypt SSL)
+sudo apt install -y certbot python3-certbot-nginx
+```
+
+For macOS:
+```bash
+# Install Homebrew (if not installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install Node.js
+brew install node@20
+
+# Install PM2
+npm install -g pm2
+
+# Install Nginx (optional)
+brew install nginx
+```
+
+For Windows:
+```
+1. Download Node.js 20.x LTS from: https://nodejs.org/
+2. Run installer and follow prompts
+3. Install PM2: npm install -g pm2
+4. Use WSL2 for Linux-like environment (recommended for production)
+```
+
+================================================================================
+                          3. DEVELOPMENT SETUP
+================================================================================
+
+3.1 CLONE/EXTRACT PROJECT
+-------------------------
+
+```bash
+# Navigate to your projects directory
+cd /home/your-username/projects
+
+# If using Git:
+git clone <repository-url> loyalloop
+cd loyalloop
+
+# If using extracted archive:
+cd course-project
+```
+
+3.2 BACKEND SETUP
+-----------------
+
+```bash
+# Navigate to backend
+cd backend
+
+# Install dependencies
+npm install
+
+# Create .env file
+cat > .env << 'EOF'
+JWT_SECRET="supersecretkey123"
+EOF
+
+# Generate database
+npx prisma generate
+npx prisma migrate dev --name init
+
+# Seed database with test data
+npm run seed
+
+# Create superuser (optional)
+npm run createsuperuser
+```
+
+3.3 FRONTEND SETUP
+------------------
+
+```bash
+# Navigate to frontend
+cd ../frontend
+
+# Install dependencies
+npm install
+
+# Create .env file (optional)
+cat > .env << 'EOF'
+REACT_APP_API_URL=http://localhost:3000
+EOF
+```
+
+3.4 START DEVELOPMENT SERVERS
+-----------------------------
+
+Terminal 1 - Backend:
+```bash
+cd backend
+npm start
+# Server running on port 3000
+```
+
+Terminal 2 - Frontend:
+```bash
+cd frontend
+npm start
+# Compiled successfully! Opens browser to http://localhost:3001
+```
+
+3.5 TEST THE APPLICATION
+------------------------
+
+1. Open browser: http://localhost:3001
+2. Login with seed data users:
+   - Superuser: superuser / Password123!
+   - Manager: manager1 / Password123!
+   - Cashier: cashier1 / Password123!
+   - User: alice_wong / Password123!
+
+3. Test features:
+   - Login/Logout
+   - Interface switching
+   - Transactions
+   - Events
+   - Promotions
+
+================================================================================
+                        4. PRODUCTION DEPLOYMENT
+================================================================================
+
+4.1 PREPARE FOR PRODUCTION
+--------------------------
+
+BACKEND PREPARATION:
+```bash
+cd backend
+
+# Set production environment variables
+cat > .env << 'EOF'
+# Generate strong JWT secret:
+# openssl rand -base64 32
+JWT_SECRET="<PASTE-STRONG-RANDOM-SECRET-HERE>"
+
+NODE_ENV=production
+PORT=3000
+
+# Email configuration (optional)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+EOF
+
+# Ensure database is ready
+npx prisma generate
+npx prisma migrate deploy
+```
+
+FRONTEND PREPARATION:
+```bash
+cd frontend
+
+# Create production environment
+cat > .env.production << 'EOF'
+REACT_APP_API_URL=https://api.yourdomain.com
+EOF
+
+# Build production bundle
+npm run build
+# Creates optimized build in /frontend/build/
+```
+
+4.2 DEPLOY BACKEND WITH PM2
+---------------------------
+
+```bash
+cd backend
+
+# Start with PM2
+pm2 start index.js --name loyalloop-backend -- 3000
+
+# Save PM2 configuration
+pm2 save
+
+# Enable PM2 startup on boot
+pm2 startup
+# Follow the command it outputs
+
+# Check status
+pm2 status
+pm2 logs loyalloop-backend
+
+# Common PM2 commands:
+pm2 restart loyalloop-backend  # Restart app
+pm2 stop loyalloop-backend     # Stop app
+pm2 delete loyalloop-backend   # Remove app
+pm2 monit                       # Monitor resources
+```
+
+4.3 DEPLOY FRONTEND (STATIC FILES)
+----------------------------------
+
+Option A: Serve with Nginx (recommended)
+```bash
+# Copy build files to web root
+sudo mkdir -p /var/www/loyalloop
+sudo cp -r frontend/build/* /var/www/loyalloop/
+sudo chown -R www-data:www-data /var/www/loyalloop
+```
+
+Option B: Serve with Node.js (simple)
+```bash
+# Install serve package
+npm install -g serve
+
+# Serve frontend
+cd frontend
+pm2 start "serve -s build -l 3001" --name loyalloop-frontend
+```
+
+4.4 FIREWALL CONFIGURATION
+--------------------------
+
+```bash
+# Allow SSH (important!)
+sudo ufw allow 22/tcp
+
+# Allow HTTP and HTTPS
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+# Enable firewall
+sudo ufw enable
+
+# Check status
+sudo ufw status
+```
+
+================================================================================
+                  5. SERVER CONFIGURATION (Nginx/Apache)
+================================================================================
+
+5.1 NGINX CONFIGURATION (RECOMMENDED)
+-------------------------------------
+
+CREATE CONFIGURATION FILE:
+```bash
+sudo nano /etc/nginx/sites-available/loyalloop
+```
+
+PASTE THIS CONFIGURATION:
+```nginx
+# LoyalLoop Application Configuration
+# Replace yourdomain.com with your actual domain
+
+# Redirect HTTP to HTTPS
+server {
+    listen 80;
+    listen [::]:80;
+    server_name yourdomain.com www.yourdomain.com;
+
+    # Redirect all HTTP to HTTPS
+    return 301 https://$server_name$request_uri;
+}
+
+# HTTPS Configuration
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name yourdomain.com www.yourdomain.com;
+
+    # SSL Certificate paths (Let's Encrypt)
+    ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+
+    # SSL Configuration (Strong Security)
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384';
+    ssl_prefer_server_ciphers off;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+
+    # Security Headers
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # Root directory for frontend
+    root /var/www/loyalloop;
+    index index.html;
+
+    # Frontend - Serve React app
+    location / {
+        try_files $uri $uri/ /index.html;
+
+        # Cache static assets
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+            expires 1y;
+            add_header Cache-Control "public, immutable";
+        }
+    }
+
+    # Backend API - Proxy to Node.js
+    location /api/ {
+        rewrite ^/api/(.*) /$1 break;
+
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+
+        proxy_cache_bypass $http_upgrade;
+        proxy_buffering off;
+
+        # Timeouts
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+
+    # Alternative: Proxy all /auth/* /events/* etc to backend
+    location ~ ^/(auth|users|transactions|events|promotions)/ {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_buffering off;
+    }
+
+    # Logging
+    access_log /var/log/nginx/loyalloop-access.log;
+    error_log /var/log/nginx/loyalloop-error.log;
+
+    # Gzip compression
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml+rss application/rss+xml font/truetype font/opentype application/vnd.ms-fontobject image/svg+xml;
+}
+```
+
+ENABLE THE SITE:
+```bash
+# Create symbolic link
+sudo ln -s /etc/nginx/sites-available/loyalloop /etc/nginx/sites-enabled/
+
+# Remove default site (optional)
+sudo rm /etc/nginx/sites-enabled/default
+
+# Test configuration
+sudo nginx -t
+
+# If test passes, reload Nginx
+sudo systemctl reload nginx
+
+# Enable Nginx to start on boot
+sudo systemctl enable nginx
+```
+
+5.2 APACHE CONFIGURATION (ALTERNATIVE)
+--------------------------------------
+
+CREATE CONFIGURATION FILE:
+```bash
+sudo nano /etc/apache2/sites-available/loyalloop.conf
+```
+
+PASTE THIS CONFIGURATION:
+```apache
+<VirtualHost *:80>
+    ServerName yourdomain.com
+    ServerAlias www.yourdomain.com
+
+    # Redirect HTTP to HTTPS
+    Redirect permanent / https://yourdomain.com/
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName yourdomain.com
+    ServerAlias www.yourdomain.com
+
+    # SSL Configuration
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/yourdomain.com/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/yourdomain.com/privkey.pem
+
+    # Security Headers
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Frontend
+    DocumentRoot /var/www/loyalloop
+
+    <Directory /var/www/loyalloop>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+
+        # React Router support
+        RewriteEngine On
+        RewriteBase /
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . /index.html [L]
+    </Directory>
+
+    # Backend API proxy
+    ProxyPreserveHost On
+    ProxyPass /api/ http://localhost:3000/
+    ProxyPassReverse /api/ http://localhost:3000/
+
+    # Alternative: Proxy specific routes
+    ProxyPass /auth http://localhost:3000/auth
+    ProxyPassReverse /auth http://localhost:3000/auth
+
+    ProxyPass /users http://localhost:3000/users
+    ProxyPassReverse /users http://localhost:3000/users
+
+    ProxyPass /transactions http://localhost:3000/transactions
+    ProxyPassReverse /transactions http://localhost:3000/transactions
+
+    ProxyPass /events http://localhost:3000/events
+    ProxyPassReverse /events http://localhost:3000/events
+
+    ProxyPass /promotions http://localhost:3000/promotions
+    ProxyPassReverse /promotions http://localhost:3000/promotions
+
+    # Logging
+    ErrorLog ${APACHE_LOG_DIR}/loyalloop-error.log
+    CustomLog ${APACHE_LOG_DIR}/loyalloop-access.log combined
+</VirtualHost>
+```
+
+ENABLE THE SITE:
+```bash
+# Enable required modules
+sudo a2enmod ssl
+sudo a2enmod headers
+sudo a2enmod rewrite
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+
+# Enable site
+sudo a2ensite loyalloop
+
+# Disable default site (optional)
+sudo a2dissite 000-default
+
+# Test configuration
+sudo apache2ctl configtest
+
+# If test passes, restart Apache
+sudo systemctl restart apache2
+
+# Enable Apache to start on boot
+sudo systemctl enable apache2
+```
+
+================================================================================
+                          6. HTTPS/SSL SETUP
+================================================================================
+
+6.1 OBTAIN SSL CERTIFICATE (Let's Encrypt - FREE)
+-------------------------------------------------
+
+USING CERTBOT (AUTOMATIC):
+```bash
+# For Nginx
+sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+
+# For Apache
+sudo certbot --apache -d yourdomain.com -d www.yourdomain.com
+
+# Follow prompts:
+# 1. Enter email address
+# 2. Agree to Terms of Service
+# 3. Choose redirect option (recommended: 2 - Redirect HTTP to HTTPS)
+
+# Test automatic renewal
+sudo certbot renew --dry-run
+
+# Certbot automatically sets up renewal cron job
+```
+
+MANUAL CERTIFICATE:
+```bash
+# Get certificate only (no auto-config)
+sudo certbot certonly --standalone -d yourdomain.com -d www.yourdomain.com
+
+# Certificate files will be at:
+# /etc/letsencrypt/live/yourdomain.com/fullchain.pem
+# /etc/letsencrypt/live/yourdomain.com/privkey.pem
+
+# Then manually configure Nginx/Apache (see section 5)
+```
+
+6.2 SSL CERTIFICATE RENEWAL
+---------------------------
+
+Let's Encrypt certificates expire every 90 days.
+
+```bash
+# Manual renewal
+sudo certbot renew
+
+# Check expiration dates
+sudo certbot certificates
+
+# Setup automatic renewal (usually done by Certbot installer)
+sudo systemctl status certbot.timer
+
+# Or add to crontab:
+sudo crontab -e
+# Add this line:
+0 3 * * * certbot renew --quiet --post-hook "systemctl reload nginx"
+```
+
+6.3 TEST SSL CONFIGURATION
+--------------------------
+
+Online tools:
+- SSL Labs: https://www.ssllabs.com/ssltest/
+- Security Headers: https://securityheaders.com/
+
+Command line:
+```bash
+# Test SSL certificate
+openssl s_client -connect yourdomain.com:443 -servername yourdomain.com
+
+# Check certificate expiration
+echo | openssl s_client -servername yourdomain.com -connect yourdomain.com:443 2>/dev/null | openssl x509 -noout -dates
+```
+
+================================================================================
+                          7. DATABASE SETUP
+================================================================================
+
+7.1 INITIALIZE DATABASE
+-----------------------
+
+```bash
+cd backend
+
+# Generate Prisma client
+npx prisma generate
+
+# Run migrations (creates tables)
+npx prisma migrate deploy
+
+# Verify database
+sqlite3 prisma/dev.db ".tables"
+# Should show: Event, EventGuest, EventOrganizer, Promotion, Transaction, User, _prisma_migrations
+```
+
+7.2 SEED DATABASE WITH SAMPLE DATA
+----------------------------------
+
+```bash
+# Run seed script
+npm run seed
+
+# This creates:
+# - 10+ users (superuser, managers, cashiers, regular users)
+# - 30+ sample transactions
+# - 5+ events
+# - 5+ promotions
+
+# View seed data credentials:
+cat SEED_DATA_CREDENTIALS.md
+```
+
+Sample seed users:
+```
+Superuser: superuser / Password123!
+Manager: manager1 / Password123!
+Cashier: cashier1 / Password123!
+Users: alice_wong, bob_smith, carol_chen / Password123!
+```
+
+7.3 CREATE SUPERUSER MANUALLY
+-----------------------------
+
+```bash
+npm run createsuperuser
+
+# Follow prompts:
+# UTORid: admin
+# Name: System Administrator
+# Email: admin@example.com
+# Password: <enter-secure-password>
+# Role: superuser
+```
+
+7.4 DATABASE BACKUP
+-------------------
+
+```bash
+# Backup SQLite database
+cp backend/prisma/dev.db backend/prisma/dev.db.backup.$(date +%Y%m%d_%H%M%S)
+
+# Restore from backup
+cp backend/prisma/dev.db.backup.YYYYMMDD_HHMMSS backend/prisma/dev.db
+
+# Setup automatic backups (cron)
+crontab -e
+# Add:
+0 2 * * * cp /path/to/backend/prisma/dev.db /path/to/backups/dev.db.$(date +\%Y\%m\%d) && find /path/to/backups -name "dev.db.*" -mtime +30 -delete
+```
+
+7.5 DATABASE MIGRATION (Schema Changes)
+---------------------------------------
+
+```bash
+# Create new migration
+npx prisma migrate dev --name descriptive_name
+
+# Apply migrations in production
+npx prisma migrate deploy
+
+# Reset database (CAUTION: Deletes all data!)
+npx prisma migrate reset
+```
+
+================================================================================
+                      8. ENVIRONMENT CONFIGURATION
+================================================================================
+
+8.1 BACKEND ENVIRONMENT VARIABLES (.env)
+----------------------------------------
+
+```bash
+# backend/.env
+
+# JWT Secret (REQUIRED)
+# Generate: openssl rand -base64 32
+JWT_SECRET="your-super-secret-jwt-key-minimum-32-characters"
+
+# Environment
+NODE_ENV=production
+
+# Port (if not using command line argument)
+# PORT=3000
+
+# Frontend URL (for CORS)
+FRONTEND_URL=https://yourdomain.com
+
+# Email Configuration (Optional)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-specific-password
+
+# Email sender
+FROM_EMAIL=noreply@yourdomain.com
+FROM_NAME="LoyalLoop Rewards"
+
+# Database URL (SQLite - default)
+DATABASE_URL="file:./dev.db"
+
+# For PostgreSQL (production alternative):
+# DATABASE_URL="postgresql://user:password@localhost:5432/loyalloop"
+
+# For MySQL (production alternative):
+# DATABASE_URL="mysql://user:password@localhost:3306/loyalloop"
+```
+
+SECURITY BEST PRACTICES:
+```bash
+# Set proper file permissions
+chmod 600 backend/.env
+chown www-data:www-data backend/.env
+
+# Never commit .env to Git
+echo ".env" >> .gitignore
+```
+
+8.2 FRONTEND ENVIRONMENT VARIABLES
+----------------------------------
+
+DEVELOPMENT (.env):
+```bash
+# frontend/.env
+REACT_APP_API_URL=http://localhost:3000
+```
+
+PRODUCTION (.env.production):
+```bash
+# frontend/.env.production
+REACT_APP_API_URL=https://api.yourdomain.com
+
+# Or if using /api/ prefix with Nginx:
+REACT_APP_API_URL=https://yourdomain.com/api
+```
+
+8.3 UPDATE FRONTEND API URL
+---------------------------
+
+If not using environment variables, update directly:
+
+```bash
+# Edit frontend/src/services/api.js
+const API_BASE_URL = process.env.REACT_APP_API_URL || "https://yourdomain.com/api";
+```
+
+Rebuild frontend after changes:
+```bash
+cd frontend
+npm run build
+sudo cp -r build/* /var/www/loyalloop/
+```
+
+================================================================================
+                          9. TROUBLESHOOTING
+================================================================================
+
+9.1 BACKEND ISSUES
+------------------
+
+ISSUE: "Cannot find module"
+```bash
+cd backend
+rm -rf node_modules package-lock.json
+npm install
+```
+
+ISSUE: "JWT_SECRET missing"
+```bash
+# Check .env file exists
+ls -la backend/.env
+
+# Verify content
+cat backend/.env | grep JWT_SECRET
+
+# If missing, create:
+echo 'JWT_SECRET="your-secret-key"' > backend/.env
+```
+
+ISSUE: "EADDRINUSE: Port 3000 already in use"
+```bash
+# Find process
+lsof -i:3000
+
+# Kill process
+kill -9 $(lsof -ti:3000)
+
+# Or use PM2
+pm2 delete loyalloop-backend
+pm2 start index.js --name loyalloop-backend -- 3000
+```
+
+ISSUE: Database errors
+```bash
+# Regenerate Prisma client
+npx prisma generate
+
+# Rerun migrations
+npx prisma migrate deploy
+
+# Check database file permissions
+ls -la backend/prisma/dev.db
+chmod 644 backend/prisma/dev.db
+```
+
+9.2 FRONTEND ISSUES
+-------------------
+
+ISSUE: "Failed to fetch" / Network errors
+```bash
+# Check API URL
+grep REACT_APP_API_URL frontend/.env.production
+
+# Verify backend is running
+curl http://localhost:3000/
+
+# Check CORS headers
+curl -I http://localhost:3000/
+```
+
+ISSUE: White page / blank screen
+```bash
+# Check browser console (F12) for errors
+# Common: Incorrect homepage in package.json
+
+# If deploying to subdirectory:
+# frontend/package.json
+"homepage": "/loyalloop"
+
+# Rebuild
+npm run build
+```
+
+ISSUE: 404 on page refresh
+```bash
+# Nginx: Ensure try_files is configured
+try_files $uri $uri/ /index.html;
+
+# Apache: Ensure mod_rewrite is enabled
+sudo a2enmod rewrite
+```
+
+9.3 SSL/HTTPS ISSUES
+--------------------
+
+ISSUE: "Certificate has expired"
+```bash
+# Renew certificate
+sudo certbot renew
+
+# Restart web server
+sudo systemctl restart nginx
+```
+
+ISSUE: "Your connection is not private"
+```bash
+# Check certificate validity
+sudo certbot certificates
+
+# Test SSL configuration
+sudo nginx -t
+
+# Verify certificate files exist
+ls -la /etc/letsencrypt/live/yourdomain.com/
+```
+
+9.4 PM2 ISSUES
+--------------
+
+ISSUE: App crashes after restart
+```bash
+# Check logs
+pm2 logs loyalloop-backend
+
+# Restart app
+pm2 restart loyalloop-backend
+
+# Reset and start fresh
+pm2 delete loyalloop-backend
+cd backend
+pm2 start index.js --name loyalloop-backend -- 3000
+pm2 save
+```
+
+ISSUE: PM2 doesn't start on boot
+```bash
+# Remove old startup script
+pm2 unstartup
+
+# Generate new startup script
+pm2 startup
+# Run the command it outputs
+
+# Save current process list
+pm2 save
+```
+
+9.5 NGINX ISSUES
+----------------
+
+ISSUE: "502 Bad Gateway"
+```bash
+# Check backend is running
+curl http://localhost:3000/
+
+# Check Nginx error log
+sudo tail -f /var/log/nginx/error.log
+
+# Restart services
+pm2 restart loyalloop-backend
+sudo systemctl restart nginx
+```
+
+ISSUE: Changes not reflecting
+```bash
+# Clear browser cache (Ctrl+Shift+R)
+
+# Check Nginx cache
+sudo rm -rf /var/cache/nginx/*
+
+# Reload Nginx
+sudo systemctl reload nginx
+```
+
+9.6 GENERAL DEBUGGING
+---------------------
+
+```bash
+# Check all services status
+sudo systemctl status nginx
+pm2 status
+
+# View logs
+pm2 logs loyalloop-backend --lines 100
+sudo tail -f /var/log/nginx/error.log
+
+# Test backend directly
+curl -X POST http://localhost:3000/auth/tokens \
+  -H "Content-Type: application/json" \
+  -d '{"utorid":"superuser","password":"Password123!"}'
+
+# Check disk space
+df -h
+
+# Check memory usage
+free -h
+
+# Check CPU usage
+top
+```
+
+================================================================================
+                            10. MAINTENANCE
+================================================================================
+
+10.1 REGULAR UPDATES
+--------------------
+
+```bash
+# Update backend packages
+cd backend
+npm update
+npm audit fix
+
+# Update frontend packages
+cd frontend
+npm update
+npm audit fix
+
+# After updates, test locally before deploying!
+```
+
+10.2 SECURITY UPDATES
+---------------------
+
+```bash
+# Check for vulnerabilities
+npm audit
+
+# Fix vulnerabilities
+npm audit fix
+
+# Force fix (may break compatibility)
+npm audit fix --force
+
+# Update to latest secure versions
+npm update
+```
+
+10.3 MONITORING
+---------------
+
+```bash
+# Monitor with PM2
+pm2 monit
+
+# Setup PM2 web dashboard
+pm2 install pm2-server-monit
+
+# View logs
+pm2 logs
+
+# Check resource usage
+pm2 list
+```
+
+10.4 LOG ROTATION
+-----------------
+
+```bash
+# PM2 log rotation
+pm2 install pm2-logrotate
+pm2 set pm2-logrotate:max_size 10M
+pm2 set pm2-logrotate:retain 7
+
+# Nginx logs (logrotate)
+sudo nano /etc/logrotate.d/nginx
+```
+
+10.5 PERFORMANCE OPTIMIZATION
+-----------------------------
+
+```bash
+# Enable gzip compression in Nginx (already in config)
+
+# Enable HTTP/2 (already in config)
+
+# Optimize React build
+cd frontend
+GENERATE_SOURCEMAP=false npm run build
+
+# Optimize images
+# Use tools like: imageoptim, tinypng, squoosh
+
+# Enable caching (already in Nginx config)
+```
+
+10.6 DATABASE MAINTENANCE
+-------------------------
+
+```bash
+# Vacuum SQLite database (optimize)
+sqlite3 backend/prisma/dev.db "VACUUM;"
+
+# Check database integrity
+sqlite3 backend/prisma/dev.db "PRAGMA integrity_check;"
+
+# Analyze database
+sqlite3 backend/prisma/dev.db "ANALYZE;"
+```
+
+================================================================================
+                          QUICK START CHECKLIST
+================================================================================
+
+DEVELOPMENT:
+-----------
+[ ] Install Node.js 18+ and npm
+[ ] Clone/extract project
+[ ] cd backend && npm install
+[ ] cd frontend && npm install
+[ ] Create backend/.env with JWT_SECRET
+[ ] Run: npx prisma generate && npx prisma migrate dev
+[ ] Run: npm run seed (backend)
+[ ] Terminal 1: cd backend && npm start
+[ ] Terminal 2: cd frontend && npm start
+[ ] Open http://localhost:3001 and test login
+
+PRODUCTION:
+----------
+[ ] Install Node.js, Nginx, PM2, Certbot
+[ ] Clone project to server
+[ ] Install all dependencies (backend & frontend)
+[ ] Configure production .env files
+[ ] Build frontend: npm run build
+[ ] Copy frontend/build to /var/www/loyalloop
+[ ] Configure Nginx (section 5.1)
+[ ] Obtain SSL certificate: sudo certbot --nginx
+[ ] Start backend with PM2
+[ ] Enable PM2 startup: pm2 startup && pm2 save
+[ ] Configure firewall: sudo ufw allow 80/tcp,443/tcp
+[ ] Test: https://yourdomain.com
+[ ] Setup backups and monitoring
+
+================================================================================
+                          SUPPORT & RESOURCES
+================================================================================
+
+DOCUMENTATION:
+- Node.js: https://nodejs.org/docs
+- Express: https://expressjs.com/
+- React: https://react.dev/
+- Prisma: https://www.prisma.io/docs
+- Nginx: https://nginx.org/en/docs/
+- PM2: https://pm2.keymetrics.io/docs/
+
+SECURITY:
+- Let's Encrypt: https://letsencrypt.org/
+- OWASP Top 10: https://owasp.org/www-project-top-ten/
+- Mozilla SSL Config: https://ssl-config.mozilla.org/
+
+TESTING TOOLS:
+- SSL Test: https://www.ssllabs.com/ssltest/
+- Security Headers: https://securityheaders.com/
+- Lighthouse (Chrome): Built-in performance audit
+
+================================================================================
+                              END OF INSTALL
+================================================================================
+
+For additional help, refer to:
+- README.md - Project overview
+- SEED_DATA_CREDENTIALS.md - Default user credentials
+- CSRF_HTTPS_SECURITY_CAREFUL.md - Security implementation details
+- SECURITY_IMPLEMENTATION_SUMMARY.md - Security features overview
+
+Last Updated: December 10, 2025
+Version: 1.0.0
+
