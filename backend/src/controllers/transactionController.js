@@ -1,9 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
-const prisma = new PrismaClient()
 import { v4 as uuidv4 } from "uuid";
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
+const prisma = new PrismaClient();
 const calculatePoints = (spent) => Math.round(spent / 0.25);
 
 export const createTransaction = async (req, res) => {
