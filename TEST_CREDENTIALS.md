@@ -1,4 +1,4 @@
-# 🔑 LoyaLoop Test User Credentials
+# LoyaLoop Test User Credentials
 
 ## Default Password for All Users
 
@@ -8,7 +8,7 @@ All test users use the same password for easy testing.
 
 ---
 
-## 👥 Test User Accounts
+## Test User Accounts
 
 ### Superuser
 ```
@@ -140,7 +140,7 @@ Points: 780
 
 ---
 
-## 🎯 Quick Test Credentials
+## Quick Test Credentials
 
 ### For Testing Different Roles:
 
@@ -153,7 +153,7 @@ Points: 780
 
 ---
 
-## 📊 Sample Data Included
+## Sample Data Included
 
 The seed script also creates:
 - **30+ transactions** (purchases, redemptions, transfers, adjustments, events)
@@ -164,7 +164,7 @@ The seed script also creates:
 
 ---
 
-## 🚀 How to Seed the Database
+## How to Seed the Database
 
 ### Locally:
 ```bash
@@ -177,9 +177,9 @@ The database should be seeded automatically after first deployment, or you can t
 
 ---
 
-## 🔐 Security Notes
+## Security Notes
 
-⚠️ **These are test credentials for development/demonstration only!**
+**These are test credentials for development/demonstration only!**
 
 **For Production:**
 - Change all default passwords
@@ -189,7 +189,7 @@ The database should be seeded automatically after first deployment, or you can t
 
 ---
 
-## 💡 Password Requirements
+## Password Requirements
 
 Passwords must meet these requirements:
 - 8-20 characters long
@@ -199,18 +199,18 @@ Passwords must meet these requirements:
 - At least one special character: `!@#$%^&*()_+-=[]{};':"\\|,.<>/?`
 
 **Example valid passwords:**
-- `Password123!` ✅ (used in seed data)
-- `MyPass456#` ✅
-- `SecureP@ss1` ✅
+- `Password123!` (used in seed data)
+- `MyPass456#` 
+- `SecureP@ss1` 
 
 **Example invalid passwords:**
-- `password` ❌ (no uppercase, no number, no special char)
-- `PASSWORD123` ❌ (no lowercase, no special char)
-- `Pass1!` ❌ (too short, less than 8 characters)
+- `password` (no uppercase, no number, no special char)
+- `PASSWORD123` (no lowercase, no special char)
+- `Pass1!` (too short, less than 8 characters)
 
 ---
 
-## 🆘 Troubleshooting Login Issues
+## Troubleshooting Login Issues
 
 ### "Invalid username or password" error:
 
