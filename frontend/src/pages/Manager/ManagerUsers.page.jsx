@@ -31,7 +31,6 @@ import { clearCache } from '../../services/api';
 import { useNotification } from '../../context/notification';
 import { ArrowUpward, ArrowDownward, Add as AddIcon } from '@mui/icons-material';
 import { useAuth } from '../../context/auth';
-import Loader from "../../components/Loader.comp";
 import ConfirmDialog from '../../components/ConfirmDialog.comp';
 
 const ManagerUsers = () => {
@@ -594,7 +593,6 @@ const ManagerUsers = () => {
                 loading={confirmLoading}
             />
         </PageShell>
-            <Loader loading={loading}/>
         </Container>
     );
 };
