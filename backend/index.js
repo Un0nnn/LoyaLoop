@@ -37,10 +37,14 @@ app.use(helmet({
     }
 }));
 
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://loyaloop-production.up.railway.app";
+
 // =============================================================================
 // CORS Configuration
 // =============================================================================
-app.use(cors());
+app.use(cors({
+    // origin: FRONTEND_URL,
+}));
 app.use(express.json());
 
 // ADD YOUR WORK HERE
@@ -107,3 +111,4 @@ server.on('error', (err) => {
     process.exit(1);
 });
 
+export default app;

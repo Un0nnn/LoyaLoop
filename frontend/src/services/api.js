@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = process.env.VITE_BACKEND_URL || "https://precious-amazement-production.up.railway.app";
+const API_BASE_URL = process.env.VITE_BACKEND_URL || "https://innovative-emotion-production-ec97.up.railway.app";
 const apiClient = axios.create({
     baseURL: API_BASE_URL,
     timeout: 15000,
