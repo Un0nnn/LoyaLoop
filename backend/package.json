@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js ${PORT:-3001}",
+    "build": "prisma generate && prisma migrate deploy",
+    "postinstall": "prisma generate",
     "dev": "nodemon index.js 3000",
     "seed": "node prisma/seed.js",
     "createsuperuser": "node prisma/createsu.js",
