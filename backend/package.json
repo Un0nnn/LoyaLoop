@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "CSSU Reward System",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js 3000",
     "dev": "nodemon index.js 3000",
