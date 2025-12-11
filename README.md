@@ -166,9 +166,7 @@ After seeding the database, use these credentials to explore different roles:
 
 Comprehensive documentation is available in the following files:
 
-- **[TECHNICAL_DOCUMENTATION.md](TECHNICAL_DOCUMENTATION.md)** - Complete system architecture, API documentation, and deployment guide
-- **[FRONTEND_TECHNICAL_DOCUMENTATION.md](FRONTEND_TECHNICAL_DOCUMENTATION.md)** - Detailed frontend documentation including advanced features like draggable components
-- **[API_REFERENCE.md](API_REFERENCE.md)** - Complete API endpoint reference with examples
+- INSTALL
 
 ### Quick Links
 
