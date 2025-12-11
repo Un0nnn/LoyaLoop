@@ -1,9 +1,8 @@
-"use strict";
-
 import express from "express";
+import EventController from "../controllers/eventController.js";
+import authMiddleware from "../auth/userAuthentication.js";
+
 const router = express.Router();
-const EventController = require("../controllers/eventController");
-const authMiddleware = require("../auth/userAuthentication");
 
 router.post("/events", authMiddleware(["manager", "superuser"]), EventController.createEvent);
 router.get("/events", authMiddleware(["regular", "cashier", "manager", "superuser"]), EventController.getEvents);
@@ -21,4 +20,4 @@ router.post("/events/:eventId/guests/me", authMiddleware(["regular", "cashier", 
 router.delete("/events/:eventId/guests/me", authMiddleware(["regular", "cashier", "manager", "superuser"]), EventController.removeSelfAsGuest);
 router.post("/events/:eventId/transactions", authMiddleware(["manager", "superuser"]), EventController.createEventTransaction);
 
-module.exports = router;
+export default router;

@@ -1,12 +1,12 @@
-const { PrismaClient } = require("@prisma/client");
-const bcrypt = require("bcrypt");
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 const prisma = new PrismaClient()
-const { v4: uuidv4 } = require("uuid");
+import { v4 as uuidv4 } from "uuid";
 const jwt = require("jsonwebtoken");
 
 const calculatePoints = (spent) => Math.round(spent / 0.25);
 
-exports.createTransaction = async (req, res) => {
+export const createTransaction = async (req, res) => {
     try {
         const { utorid, type, spent, amount, relatedId, remark, promotionIds } = req.body;
         const createdBy = req.user.utorid;
@@ -244,7 +244,7 @@ exports.createTransaction = async (req, res) => {
 };
 
 
-exports.getTransactions = async (req, res) => {
+export const getTransactions = async (req, res) => {
     try {
         const {
             name,
@@ -315,7 +315,7 @@ exports.getTransactions = async (req, res) => {
     }
 };
 
-exports.getTransaction = async (req, res) => {
+export const getTransaction = async (req, res) => {
     try {
         const transactionId = Number(req.params.transactionId);
 
@@ -363,7 +363,7 @@ exports.getTransaction = async (req, res) => {
     }
 };
 
-exports.setTransactionSuspicious = async (req, res) => {
+export const setTransactionSuspicious = async (req, res) => {
     try {
         const transactionId = Number(req.params.transactionId);
         const { suspicious } = req.body;
@@ -429,7 +429,7 @@ exports.setTransactionSuspicious = async (req, res) => {
     }
 };
 
-exports.createTransfer = async (req, res) => {
+export const createTransfer = async (req, res) => {
     try {
         const senderId = req.user.id;
         const recipientId = Number(req.params.userId);
@@ -501,7 +501,7 @@ exports.createTransfer = async (req, res) => {
     }
 };
 
-exports.createRedemption = async (req, res) => {
+export const createRedemption = async (req, res) => {
     try {
         const userId = req.user.id;
         const { type, amount, remark } = req.body;
@@ -545,7 +545,7 @@ exports.createRedemption = async (req, res) => {
     }
 };
 
-exports.getMyTransactions = async (req, res) => {
+export const getMyTransactions = async (req, res) => {
     try {
         const userId = req.user.id;
         const {
@@ -594,7 +594,7 @@ exports.getMyTransactions = async (req, res) => {
     }
 };
 
-exports.processRedemption = async (req, res) => {
+export const processRedemption = async (req, res) => {
     try {
         const transactionId = Number(req.params.transactionId);
         const { processed } = req.body;
@@ -644,3 +644,4 @@ exports.processRedemption = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 };
+export default { createTransaction,getTransactions,getTransaction,setTransactionSuspicious,createTransfer,createRedemption,getMyTransactions,processRedemption };

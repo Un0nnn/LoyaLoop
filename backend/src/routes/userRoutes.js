@@ -1,10 +1,9 @@
-"use strict";
+import express from "express";
+import UserController from "../controllers/userController.js";
+import authMiddleware from "../auth/userAuthentication.js";
+import multer from 'multer';
 
-const express = require("express");
 const router = express.Router();
-const UserController = require("../controllers/userController");
-const authMiddleware = require("../auth/userAuthentication");
-const multer = require('multer');
 const upload = multer();
 
 router.post("/users", authMiddleware(["cashier", "manager", "superuser"]), UserController.createUser);
@@ -18,6 +17,4 @@ router.get("/users/:userId", authMiddleware(["cashier", "manager", "superuser"])
 router.patch("/users/:userId", authMiddleware(["manager", "superuser"]), UserController.updateUser);
 router.delete("/users/:userId", authMiddleware(["manager", "superuser"]), UserController.deleteUser);
 
-
-
-module.exports = router;
+export default router;

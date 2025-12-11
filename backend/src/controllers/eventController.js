@@ -1,10 +1,10 @@
-const { PrismaClient } = require("@prisma/client");
-const bcrypt = require("bcrypt");
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 const prisma = new PrismaClient();
-const { v4: uuidv4 } = require("uuid");
+import { v4 as uuidv4 } from "uuid";
 const jwt = require("jsonwebtoken");
 
-exports.createEvent = async (req, res) => {
+export const createEvent = async (req, res) => {
     try {
         const { name, description, location, startTime, endTime, capacity, points } = req.body;
 
@@ -69,7 +69,7 @@ exports.createEvent = async (req, res) => {
     }
 };
 
-exports.getEvents = async (req, res) => {
+export const getEvents = async (req, res) => {
     try {
         const {
             name,
@@ -189,7 +189,7 @@ exports.getEvents = async (req, res) => {
     }
 };
 
-exports.getEventById = async (req, res) => {
+export const getEventById = async (req, res) => {
     try {
         const eventId = parseInt(req.params.eventId);
         const userId = req.user?.id;
@@ -274,7 +274,7 @@ exports.getEventById = async (req, res) => {
     }
 };
 
-exports.updateEvent = async (req, res) => {
+export const updateEvent = async (req, res) => {
     try {
         const { eventId } = req.params;
         const userId = req.user?.id;
@@ -413,7 +413,7 @@ exports.updateEvent = async (req, res) => {
 };
 
 
-exports.deleteEvent = async (req, res) => {
+export const deleteEvent = async (req, res) => {
     try {
         const { eventId } = req.params;
         const userRole = req.user?.role;
@@ -447,7 +447,7 @@ exports.deleteEvent = async (req, res) => {
     }
 };
 
-exports.addEventOrganizer = async (req, res) => {
+export const addEventOrganizer = async (req, res) => {
     try {
         const { eventId } = req.params;
         const { utorid } = req.body;
@@ -510,7 +510,7 @@ exports.addEventOrganizer = async (req, res) => {
     }
 };
 
-exports.removeEventOrganizer = async (req, res) => {
+export const removeEventOrganizer = async (req, res) => {
     try {
         const { eventId, userId } = req.params;
 
@@ -545,7 +545,7 @@ exports.removeEventOrganizer = async (req, res) => {
     }
 };
 
-exports.addEventGuest = async (req, res) => {
+export const addEventGuest = async (req, res) => {
     try {
         const { eventId } = req.params;
         const { utorid } = req.body;
@@ -602,7 +602,7 @@ exports.addEventGuest = async (req, res) => {
     }
 };
 
-exports.removeEventGuest = async (req, res) => {
+export const removeEventGuest = async (req, res) => {
     try {
         const { eventId, userId } = req.params;
 
@@ -632,7 +632,7 @@ exports.removeEventGuest = async (req, res) => {
     }
 };
 
-exports.addSelfAsGuest = async (req, res) => {
+export const addSelfAsGuest = async (req, res) => {
     try {
         const { eventId } = req.params;
         const userId = req.user.id;
@@ -692,7 +692,7 @@ exports.addSelfAsGuest = async (req, res) => {
     }
 };
 
-exports.removeSelfAsGuest = async (req, res) => {
+export const removeSelfAsGuest = async (req, res) => {
     try {
         const { eventId } = req.params;
         const userId = req.user.id;
@@ -718,7 +718,7 @@ exports.removeSelfAsGuest = async (req, res) => {
     }
 };
 
-exports.createEventTransaction = async (req, res) => {
+export const createEventTransaction = async (req, res) => {
     try {
         const { eventId } = req.params;
         const { type, utorid, amount, remark } = req.body;
@@ -842,3 +842,4 @@ exports.createEventTransaction = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 };
+export default { createEvent,getEvents,getEventById,updateEvent,deleteEvent,addEventOrganizer,removeEventOrganizer,addEventGuest,removeEventGuest,addSelfAsGuest,removeSelfAsGuest,createEventTransaction };

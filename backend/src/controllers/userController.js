@@ -1,9 +1,9 @@
-const { PrismaClient } = require("@prisma/client");
-const bcrypt = require("bcrypt");
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 const prisma = new PrismaClient();
-const { v4: uuidv4 } = require("uuid");
+import { v4 as uuidv4 } from "uuid";
 
-exports.createUser = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
         let { utorid, name, email} = req.body;
 
@@ -91,7 +91,7 @@ exports.createUser = async (req, res) => {
     }
 };
 
-exports.getUsers = async (req, res) => {
+export const getUsers = async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;
         const limit = parseInt(req.query.limit) || 10;
@@ -155,7 +155,7 @@ exports.getUsers = async (req, res) => {
     }
 };
 
-exports.getUser = async (req, res) => {
+export const getUser = async (req, res) => {
     try {
         const userId = parseInt(req.params.userId);
 
@@ -245,7 +245,7 @@ exports.getUser = async (req, res) => {
     }
 };
 
-exports.updateUser = async (req, res) => {
+export const updateUser = async (req, res) => {
     try {
         const userId = parseInt(req.params.userId);
 
@@ -383,7 +383,7 @@ exports.updateUser = async (req, res) => {
 };
 
 // Delete a user and clean up dependent records. Protected to manager/superuser via routes.
-exports.deleteUser = async (req, res) => {
+export const deleteUser = async (req, res) => {
     try {
         const userId = parseInt(req.params.userId);
         if (!userId || isNaN(userId) || userId <= 0) {
@@ -417,7 +417,7 @@ exports.deleteUser = async (req, res) => {
     }
 };
 
-exports.updateMe = async (req, res) => {
+export const updateMe = async (req, res) => {
     try {
         const userId = req.user.id;
         let { name, email, birthday } = req.body || {};
@@ -535,7 +535,7 @@ exports.updateMe = async (req, res) => {
     }
 };
 
-exports.getCurrentUser = async (req, res) => {
+export const getCurrentUser = async (req, res) => {
     try {
         const userId = req.user.id;
 
@@ -605,7 +605,7 @@ exports.getCurrentUser = async (req, res) => {
     }
 };
 
-exports.updateMePassword = async (req, res) => {
+export const updateMePassword = async (req, res) => {
     try {
         const userId = req.user.id;
         const { old, new: newPassword } = req.body;
@@ -643,3 +643,4 @@ exports.updateMePassword = async (req, res) => {
         res.status(500).json({ error: "Failed to update password" });
     }
 };
+export default { createUser,getUsers,getUser,updateUser,deleteUser,updateMe,getCurrentUser,updateMePassword };

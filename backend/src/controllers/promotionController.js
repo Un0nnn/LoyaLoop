@@ -1,10 +1,10 @@
-const { PrismaClient } = require("@prisma/client");
-const bcrypt = require("bcrypt");
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 const prisma = new PrismaClient()
-const { v4: uuidv4 } = require("uuid");
+import { v4 as uuidv4 } from "uuid";
 const jwt = require("jsonwebtoken");
 
-exports.createPromotion = async (req, res) => {
+export const createPromotion = async (req, res) => {
     try {
         let { name, description, type, startTime, endTime, minSpending, rate, points } = req.body;
 
@@ -104,7 +104,7 @@ exports.createPromotion = async (req, res) => {
     }
 };
 
-exports.getPromotions = async (req, res) => {
+export const getPromotions = async (req, res) => {
     try {
         const { name, type, page = 1, limit = 10, started, ended } = req.query;
 
@@ -217,7 +217,7 @@ exports.getPromotions = async (req, res) => {
     }
 };
 
-exports.getPromotionById = async (req, res) => {
+export const getPromotionById = async (req, res) => {
     try {
         const { promotionId } = req.params;
         const id = parseInt(promotionId);
@@ -256,7 +256,7 @@ exports.getPromotionById = async (req, res) => {
     }
 };
 
-exports.updatePromotion = async (req, res) => {
+export const updatePromotion = async (req, res) => {
     try {
         const { promotionId } = req.params;
         const id = parseInt(promotionId);
@@ -390,7 +390,7 @@ exports.updatePromotion = async (req, res) => {
     }
 };
 
-exports.deletePromotion = async (req, res) => {
+export const deletePromotion = async (req, res) => {
     try {
         const { promotionId } = req.params;
         const id = parseInt(promotionId);
@@ -430,3 +430,4 @@ exports.deletePromotion = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 };
+export default { createPromotion,getPromotions,getPromotionById,updatePromotion,deletePromotion };

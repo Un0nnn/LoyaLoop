@@ -1,38 +1,38 @@
-'use strict';
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
+import { v4 as uuidv4 } from "uuid";
+import jwt from "jsonwebtoken";
 
-const { PrismaClient } = require("@prisma/client");
-const bcrypt = require("bcrypt");
 const prisma = new PrismaClient();
-const { v4: uuidv4 } = require("uuid");
-const jwt = require("jsonwebtoken");
-
 const resetRequestTimestamps = new Map();
 
 // Optional: configure nodemailer if SMTP env vars are present
 let mailer = null;
-try {
-    const nodemailer = require('nodemailer');
-    const SMTP_HOST = process.env.SMTP_HOST;
-    const SMTP_PORT = process.env.SMTP_PORT;
-    const SMTP_USER = process.env.SMTP_USER;
-    const SMTP_PASS = process.env.SMTP_PASS;
+(async () => {
+    try {
+        const { default: nodemailer } = await import('nodemailer');
+        const SMTP_HOST = process.env.SMTP_HOST;
+        const SMTP_PORT = process.env.SMTP_PORT;
+        const SMTP_USER = process.env.SMTP_USER;
+        const SMTP_PASS = process.env.SMTP_PASS;
 
-    if (SMTP_HOST && SMTP_PORT && SMTP_USER && SMTP_PASS) {
-        mailer = nodemailer.createTransport({
-            host: SMTP_HOST,
-            port: Number(SMTP_PORT),
-            secure: Number(SMTP_PORT) === 465, // true for 465, false for other ports
-            auth: {
-                user: SMTP_USER,
-                pass: SMTP_PASS,
-            },
-        });
+        if (SMTP_HOST && SMTP_PORT && SMTP_USER && SMTP_PASS) {
+            mailer = nodemailer.createTransport({
+                host: SMTP_HOST,
+                port: Number(SMTP_PORT),
+                secure: Number(SMTP_PORT) === 465, // true for 465, false for other ports
+                auth: {
+                    user: SMTP_USER,
+                    pass: SMTP_PASS,
+                },
+            });
+        }
+    } catch (e) {
+        // nodemailer not installed or other error - mailer remains null
     }
-} catch (e) {
-    // nodemailer not installed or other error - mailer remains null
-}
+})();
 
-exports.authenticateUser = async (req, res) => {
+export const authenticateUser = async (req, res) => {
     try {
         const { utorid, password } = req.body;
 
@@ -90,7 +90,7 @@ exports.authenticateUser = async (req, res) => {
     }
 };
 
-exports.requestPasswordReset = async (req, res) => {
+export const requestPasswordReset = async (req, res) => {
     try {
         const { utorid, email } = req.body;
 
@@ -168,7 +168,7 @@ exports.requestPasswordReset = async (req, res) => {
     }
 };
 
-exports.resetPasswordWithToken = async (req, res) => {
+export const resetPasswordWithToken = async (req, res) => {
     try {
         const { resetToken } = req.params;
         const { utorid, password } = req.body;
@@ -239,4 +239,10 @@ exports.resetPasswordWithToken = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
+};
+
+export default {
+    authenticateUser,
+    requestPasswordReset,
+    resetPasswordWithToken
 };

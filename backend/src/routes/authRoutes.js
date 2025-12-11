@@ -1,10 +1,11 @@
-const express = require("express");
+import express from "express";
+import AuthController from "../controllers/authController.js";
+import jwt from 'jsonwebtoken';
+
 const router = express.Router();
-const AuthController = require("../controllers/authController");
-const jwt = require('jsonwebtoken');
 
 router.post("/auth/tokens", AuthController.authenticateUser);
 router.post("/auth/resets", AuthController.requestPasswordReset);
 router.post("/auth/resets/:resetToken", AuthController.resetPasswordWithToken);
 
-module.exports = router;
+export default router;

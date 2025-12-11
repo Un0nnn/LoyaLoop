@@ -1,6 +1,4 @@
-'use strict'
-
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 const authMiddleware = (allowedRoles = []) => {
     return (req, res, next) => {
@@ -36,4 +34,4 @@ const authMiddleware = (allowedRoles = []) => {
     }
 }
 
-module.exports = authMiddleware;
+export default authMiddleware;

@@ -1,9 +1,8 @@
-"use strict";
+import express from "express";
+import TransactionController from "../controllers/transactionController.js";
+import authMiddleware from "../auth/userAuthentication.js";
 
-const express = require("express");
 const router = express.Router();
-const TransactionController = require("../controllers/transactionController");
-const authMiddleware = require("../auth/userAuthentication");
 
 router.post("/transactions", authMiddleware(["cashier", "manager", "superuser"]), TransactionController.createTransaction);
 // router.post("/transactions", authMiddleware(["manager", "superuser"]), TransactionController.createTransaction);
@@ -22,4 +21,4 @@ router.post("/users/:userId/transactions", authMiddleware(["regular", "cashier",
 
 router.patch("/transactions/:transactionId/processed", authMiddleware(["cashier", "manager", "superuser"]), TransactionController.processRedemption);
 
-module.exports = router;
+export default router;
