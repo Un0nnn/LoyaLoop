@@ -1,6 +1,19 @@
 #!/usr/bin/env node
 'use strict';
 
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import dotenv from "dotenv";
+import userRoutes from "./src/routes/userRoutes.js";
+import authRoutes from "./src/routes/authRoutes.js";
+import transactionRoutes from "./src/routes/transactionRoutes.js";
+import eventRoutes from "./src/routes/eventRoutes.js";
+import promotionRoutes from "./src/routes/promotionRoutes.js";
+
+// Load environment variables
+dotenv.config();
+
 const port = (() => {
     const args = process.argv;
 
@@ -18,12 +31,12 @@ const port = (() => {
     return num;
 })();
 
-// const express = require("express");
-// const cors = require("cors");
-import express from "express";
-import cors from "cors";
-import helmet from "helmet";
-// const helmet = require("helmet");
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+    console.error("missing JWT_SECRET");
+    process.exit(1);
+}
+
 const app = express();
 
 // =============================================================================
@@ -73,56 +86,10 @@ app.use(express.json());
 // Handle preflight requests
 app.options('*', cors());
 
-// ADD YOUR WORK HERE
-
-import dotenv from "dotenv";
-
-dotenv.config();
-const JWT_SECRET = process.env.JWT_SECRET;
-if (!JWT_SECRET) {
-    console.error("missing JWT_SECRET");
-    process.exit(1);
-}
-
+// Set JWT secret on app for middleware access
 app.set("jwtSecret", JWT_SECRET);
 
-// =============================================================================
-// CSRF PROTECTION ANALYSIS
-// =============================================================================
-// This app is PROTECTED against CSRF attacks because:
-//
-// 1. JWT tokens stored in sessionStorage (not cookies)
-//    - CSRF exploits automatic cookie sending by browsers
-//    - sessionStorage is not automatically sent with requests
-//    - Attackers cannot access sessionStorage from other origins
-//
-// 2. Authorization headers must be explicitly set
-//    - Our app sends: Authorization: Bearer <token>
-//    - This requires JavaScript to set the header
-//    - Cross-origin JavaScript cannot set custom headers without CORS
-//    - CORS preflight blocks unauthorized origins
-//
-// 3. Why traditional CSRF tokens aren't needed:
-//    - CSRF tokens protect cookie-based authentication
-//    - JWT in headers is inherently CSRF-proof
-//    - Adding CSRF tokens would be redundant
-//
-// If you switch to cookie-based auth, you would need:
-// - CSRF tokens (csurf package)
-// - SameSite cookie attribute
-// - Cookie-based session management
-//
-// Current security status: ✅ CSRF Protected via JWT architecture
-// =============================================================================
-
-// const authRoutes = require("./routes/authRoutes");
-import userRoutes from "./src/routes/userRoutes.js";
-import authRoutes from "./src/routes/authRoutes.js";
-import transactionRoutes from "./src/routes/transactionRoutes.js";
-import eventRoutes from "./src/routes/eventRoutes.js";
-import promotionRoutes from "./src/routes/promotionRoutes.js";
-
-
+// Register routes
 app.use(authRoutes);
 app.use(userRoutes);
 app.use(transactionRoutes);
