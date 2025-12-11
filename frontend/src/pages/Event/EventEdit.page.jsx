@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import PageShell from '../../components/PageShell.comp';
 import { TextField, Button, Stack } from '@mui/material';
 import eventService from '../../services/event.service';
@@ -18,7 +18,7 @@ const EventEdit = () => {
     const { showMessage } = useNotification();
     const navigate = useNavigate();
 
-    const load = async () => {
+    const load = useCallback(async () => {
         setLoading(true);
         try {
             const resp = await eventService.getEventById(eventId);
@@ -33,9 +33,9 @@ const EventEdit = () => {
             console.error(err);
             showMessage('Failed to load event', 'error');
         } finally { setLoading(false); }
-    };
+    }, [eventId, showMessage]);
 
-    useEffect(() => { if (eventId) load(); }, [eventId]);
+    useEffect(() => { if (eventId) load(); }, [eventId, load]);
 
     const handleSave = async () => {
         setLoading(true);

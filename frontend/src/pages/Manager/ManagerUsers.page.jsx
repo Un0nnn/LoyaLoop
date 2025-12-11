@@ -43,7 +43,6 @@ const ManagerUsers = () => {
     const [search, setSearch] = useState(searchParams.get('search') || '');
     const [role, setRole] = useState(searchParams.get('role') || '');
     const [status, setStatus] = useState(searchParams.get('status') || '');
-    const [loading, setLoading] = useState(false);
 
     const [loadingId, setLoadingId] = useState(null);
     const { showMessage } = useNotification();
@@ -235,9 +234,6 @@ const ManagerUsers = () => {
     };
 
     // Delete (permanently) a user on the server and update UI
-    const handleDeactivate = async (user) => {
-        setConfirmingUser(user);
-    };
 
     const handleDelete = async () => {
         if (!confirmingUser) return;
@@ -275,7 +271,7 @@ const ManagerUsers = () => {
             // client-side password validation using exact backend regex
             if (addPassword) {
                 // exact backend regex from authController.resetPasswordWithToken
-                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,20}$/;
+                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,20}$/;
                 if (!passwordRegex.test(addPassword)) {
                     const msg = 'User password does not meet requirements';
                     setAddPasswordError(msg);

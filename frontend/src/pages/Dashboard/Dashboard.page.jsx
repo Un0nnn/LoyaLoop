@@ -13,7 +13,7 @@ import { useNotification } from '../../context/notification';
 import { TrendingUp, People, Event, LocalOffer, QrCode2, Timeline, Verified } from '@mui/icons-material';
 
 const Dashboard = () => {
-    const { currentUser, setCurrentUser, activeInterface, refreshUser } = useAuth();
+    const { currentUser, activeInterface, refreshUser } = useAuth();
 
     const [copied, setCopied] = React.useState(false);
     const [recent, setRecent] = React.useState([]);

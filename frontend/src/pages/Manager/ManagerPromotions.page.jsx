@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import PageShell from '../../components/PageShell.comp';
 import { Typography, Button, Stack, TextField, Chip, Dialog, DialogTitle, DialogContent, DialogActions, MenuItem, Table, TableHead, TableBody, TableRow, TableCell, CircularProgress } from '@mui/material';
 import promotionService from '../../services/promotion.service';
@@ -54,7 +54,7 @@ const ManagerPromotions = () => {
         return matchesSearch && matchesStatus;
     });
 
-    const loadAll = async () => {
+    const loadAll = useCallback(async () => {
         setLoading(true);
         try {
             const resp = await promotionService.getPromotions();
@@ -64,9 +64,9 @@ const ManagerPromotions = () => {
             console.error(err);
             showMessage('Failed to load promotions', 'error');
         } finally { setLoading(false); }
-    };
+    }, [showMessage]);
 
-    useEffect(() => { loadAll(); }, [showMessage]);
+    useEffect(() => { loadAll(); }, [loadAll]);
 
     const openCreate = () => {
         setEditingId(null);

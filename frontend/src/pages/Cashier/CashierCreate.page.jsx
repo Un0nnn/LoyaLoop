@@ -29,7 +29,7 @@ const CashierCreate = () => {
             }
         };
         loadPromos();
-    }, []);
+    }, [showMessage]);
 
     useEffect(() => {
         if (promotion && amount) {
@@ -67,7 +67,7 @@ const CashierCreate = () => {
             setUpdatedAmount(amount);
             setSelectedPromo(null);
         }
-    }, [promotion, amount, promos]);
+    }, [promotion, amount, promos, showMessage]);
 
     const handleSubmit = async () => {
         if (!utorid || !amount) {

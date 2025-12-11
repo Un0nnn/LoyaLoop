@@ -1,0 +1,14 @@
+
+> loyality@0.1.0 build
+> CI=false react-scripts build
+
+Creating an optimized production build...
+Failed to compile.
+
+[eslint] 
+src/pages/Manager/ManagerUsers.page.jsx
+  Line 597:30:  'loading' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+
+

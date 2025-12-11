@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Typography, Chip, Stack, TextField, MenuItem, Table, TableHead, TableRow, TableCell, TableBody, Button, Pagination, Dialog, DialogTitle, DialogContent, DialogActions, CircularProgress, Card, CardContent, Box, Grid, Avatar, Divider } from '@mui/material';
+import { Typography, Chip, Stack, TextField, MenuItem, Button, Pagination, Dialog, DialogTitle, DialogContent, DialogActions, CircularProgress, Card, CardContent, Box, Grid, Avatar, Divider } from '@mui/material';
 import PageShell from "../../components/PageShell.comp";
 import transactionService from '../../services/transaction.service';
 import userService from '../../services/user.service';
@@ -23,7 +23,6 @@ const Transactions = () => {
 
     // Use activeInterface if available, otherwise fall back to currentUser.role
     const effectiveRole = activeInterface || currentUser?.role;
-    const isManager = currentUser && (effectiveRole === 'manager' || effectiveRole === 'superuser');
 
     // Fetch user details for relatedId
     const fetchUserDetails = async (userId) => {

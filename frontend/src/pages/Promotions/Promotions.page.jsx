@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PageShell from '../../components/PageShell.comp';
 import { Button, Stack, TextField, Table, TableHead, TableBody, TableRow, TableCell, Typography, CircularProgress, Chip, MenuItem, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
@@ -29,7 +29,7 @@ const Promotions = () => {
         setSearchParams(params, { replace: true });
     }, [search, sort, setSearchParams]);
 
-    const loadPromos = async () => {
+    const loadPromos = useCallback(async () => {
         setLoading(true);
         try {
             const resp = await promotionService.getPromotions();
@@ -41,11 +41,11 @@ const Promotions = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [showMessage]);
 
     useEffect(() => {
         loadPromos();
-    }, []);
+    }, [loadPromos]);
 
     const isActive = (promo) => {
         const now = new Date();

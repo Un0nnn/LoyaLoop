@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Typography, Button, Stack, TextField, Dialog, DialogTitle, DialogContent, DialogActions, Chip, Divider, Card, CardContent, Avatar, List, ListItem, ListItemAvatar, ListItemText, ListItemSecondaryAction, IconButton, CircularProgress, Box, Grid } from '@mui/material';
 import PageShell from '../../components/PageShell.comp';
 import eventService from '../../services/event.service';
@@ -35,7 +35,7 @@ const Event = () => {
     // Check if event has ended
     const hasEnded = event ? new Date(event.endTime) < new Date() : false;
 
-    const load = async () => {
+    const load = useCallback(async () => {
         setLoading(true);
         try {
             const resp = await eventService.getEventById(eventId);
@@ -68,9 +68,9 @@ const Event = () => {
             console.error(err);
             showMessage('Failed to load event', 'error');
         } finally { setLoading(false); }
-    };
+    }, [eventId, isRegularUser, showMessage, navigate]);
 
-    useEffect(() => { if (eventId) load(); }, [eventId, effectiveRole]);
+    useEffect(() => { if (eventId) load(); }, [eventId, effectiveRole, load]);
 
     const handleRSVP = async () => {
         setRsvpLoading(true);

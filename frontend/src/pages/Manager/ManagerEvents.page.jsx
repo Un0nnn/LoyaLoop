@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import PageShell from '../../components/PageShell.comp';
 import { Typography, Button, Stack, Chip, Divider } from '@mui/material';
 import eventService from '../../services/event.service';
@@ -12,7 +12,7 @@ const ManagerEvents = () => {
     const { showMessage } = useNotification();
     const navigate = useNavigate();
 
-    const load = async () => {
+    const load = useCallback(async () => {
         setLoading(true);
         try {
             const resp = await eventService.getEvents();
@@ -22,9 +22,9 @@ const ManagerEvents = () => {
             console.error(err);
             showMessage('Failed to load events', 'error');
         } finally { setLoading(false); }
-    };
+    }, [showMessage]);
 
-    useEffect(()=>{ load(); }, []);
+    useEffect(()=>{ load(); }, [load]);
 
     const handleCreateNew = () => navigate('/events/create');
     const handleView = (id) => navigate(`/events/${id}`);

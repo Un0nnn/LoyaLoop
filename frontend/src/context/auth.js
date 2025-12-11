@@ -302,7 +302,7 @@ export function AuthProvider({ children }) {
         restoreImpersonation,
         getImpersonationCount,
         getAuditLog
-    }), [currentUser, token, tokenExpiry, login, logout, refreshUser, activeInterface, impersonateLogin, restoreImpersonation]);
+    }), [currentUser, token, tokenExpiry, login, logout, refreshUser, activeInterface, switchInterface, impersonateLogin, restoreImpersonation]);
 
     return (
         <AuthContext.Provider value={value}>

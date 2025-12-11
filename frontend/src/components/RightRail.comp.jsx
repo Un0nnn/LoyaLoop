@@ -185,7 +185,6 @@ const RightRail = () => {
                   const type = (t.type || '').toLowerCase();
                   const amount = t.points ?? t.amount ?? 0;
                   const color = type === 'transfer' ? '#14B8A6' : type === 'purchase' ? '#34d399' : '#7c3aed';
-                  const title = t.type ? `${capitalize(type)} • ${amount}` : `${amount}`;
                   return (
                     <ListItem key={t.id} sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
                       <ListItemText
@@ -213,6 +212,3 @@ const RightRail = () => {
 
 export default RightRail;
 
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}

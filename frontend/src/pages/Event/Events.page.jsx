@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PageShell from '../../components/PageShell.comp';
-import { Button, Stack, TextField, Pagination, CircularProgress, Typography, Card, CardContent, CardMedia, CardActions, Box, Grid, Select, MenuItem, FormControl, InputLabel, Chip } from '@mui/material';
+import { Button, Stack, Pagination, CircularProgress, Typography, Card, CardContent, CardMedia, CardActions, Box, Grid, Select, MenuItem, FormControl, InputLabel, Chip } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { CalendarToday, PlaceOutlined, PeopleAltOutlined, EventOutlined, Add, FiberManualRecord } from '@mui/icons-material';
 import eventService from '../../services/event.service';
 import { useNotification } from '../../context/notification';
 import { useAuth } from '../../context/auth';
-import SafeHtml from '../../components/SafeHtml.comp';
 
 const Events = () => {
     const navigate = useNavigate();
@@ -25,7 +24,6 @@ const Events = () => {
 
     // Determine if user is regular (not manager/organizer/superuser)
     const effectiveRole = activeInterface || currentUser?.role || 'regular';
-    const isRegularUser = effectiveRole === 'regular' || effectiveRole === 'cashier';
     const canManageEvents = effectiveRole === 'manager' || effectiveRole === 'organizer' || effectiveRole === 'superuser';
 
     // Helper function to determine event status
@@ -98,7 +96,7 @@ const Events = () => {
         if (page !== 1) {
             setPage(1);
         }
-    }, [status]);
+    }, [status, page]);
 
     const handleView = (eventId) => navigate(`/events/${eventId}`);
     const handleCreate = () => navigate('/events/create');

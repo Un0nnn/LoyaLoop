@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PageShell from '../../components/PageShell.comp';
 import { TextField, Button, Table, TableHead, TableRow, TableCell, TableBody, Chip, Stack, Pagination, Dialog, DialogTitle, DialogContent, DialogActions, CircularProgress, MenuItem, Typography } from '@mui/material';
@@ -36,7 +36,7 @@ const ManagerTransactions = () => {
         setSearchParams(params, { replace: true });
     }, [search, type, page, setSearchParams]);
 
-    const load = async () => {
+    const load = useCallback(async () => {
         setLoading(true);
         try {
             const params = { name: search || undefined, type: type === 'all' ? undefined : type, page, limit };
@@ -54,9 +54,9 @@ const ManagerTransactions = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [search, type, page, limit, showMessage]);
 
-    useEffect(() => { load(); }, [page, limit]);
+    useEffect(() => { load(); }, [load]);
 
     const handleView = async (id) => {
         try {
