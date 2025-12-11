@@ -249,7 +249,7 @@ railway run npm run seed
 
 ---
 
-## 📞 Quick Reference
+## Quick Reference
 
 **Test Login (Superuser):**
 - Username: `superadmin`
