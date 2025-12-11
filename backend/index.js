@@ -46,7 +46,7 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "https://loyaloop-production.up
 // CORS Configuration
 // =============================================================================
 app.use(cors({
-    // origin: FRONTEND_URL,
+    origin: FRONTEND_URL,
 }));
 app.use(express.json());
 
